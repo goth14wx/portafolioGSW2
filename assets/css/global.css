@@ -1,0 +1,58 @@
+.back {
+  background-image: url('../img/win10wallpaper.jpg');
+  background-size: cover;
+}
+#inspire {
+  background: none;
+}
+
+.backgroundColor{
+  background-color:#0B0014 !important;
+}
+.color-gradient-azure{
+  background-image: url('https://aadcdn.msauth.net/ests/2.1/content/images/backgrounds/0_a5dbd4393ff6a725c7e62b61df7e72f0.jpg');
+  background-size: cover;
+}
+.font-abel{
+  font-family: 'Abel', sans-serif;
+}
+
+.font-cutive-mono{
+  font-family: 'Cutive Mono', monospace;
+}
+
+.font-barlow{
+  font-family: 'Barlow', sans-serif;
+}
+
+.font-darker-grotesque{
+  font-family: 'Darker Grotesque', sans-serif;
+}
+
+.font-poiret-one{
+  font-family: 'Poiret One', cursive;
+}
+
+.font-monoton{
+  font-family: 'Monoton', cursive;
+}
+
+.font-julius-sans-one{
+  font-family: 'Julius Sans One', sans-serif;
+}
+
+.fredericka-the-great{
+  font-family: 'Fredericka the Great', cursive;
+}
+
+.font-livvic{
+font-family: 'Livvic', sans-serif;
+}
+
+.font-ubuntu{
+font-family: 'Ubuntu', sans-serif;
+}
+
+.background-azure{
+  background-color: #0078d4 !important;
+}
