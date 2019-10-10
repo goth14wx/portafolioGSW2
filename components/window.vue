@@ -1,5 +1,5 @@
 <template>
- <vue-draggable-resizable :class-name="{'white':true,'color-gradient-azure':azureBackground}"  :w="1200" :x="50" :y="5" :max-width="1300" :min-width="300" :h="560">
+ <vue-draggable-resizable :class="{'white':!azureBackground,'color-azure':azureBackground}"  :w="1200" :x="50" :y="5" :max-width="1300" :min-width="300" :h="560">
     <v-system-bar window dark class="ma-0">
       <v-icon>{{this.icon}}</v-icon>
       <span class="truncate-text">{{this.title}}</span>
@@ -21,12 +21,12 @@
       return{
         title:this.titleProp,
         icon:this.iconProp,
-        azureBackground:this.azureBack ? false: true
+        azureBackground:this.azureBack ? true:false
       }
     },
     watch:{
-      azureBack:function(){
-        this.azureBackground= true;
+      azureBack:function(valueAzure){
+        this.azureBackground=valueAzure;
       }
     }
   }

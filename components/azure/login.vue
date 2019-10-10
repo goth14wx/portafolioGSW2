@@ -13,43 +13,89 @@
             sm="8"
             md="4"
           >
-            <v-card  >
+            <v-card class="mt-12 pa-5" light tile >
               <v-toolbar
-                dark
+                light
                 flat
               >
-                <v-toolbar-title>Bienvenido</v-toolbar-title>
+                <v-toolbar-title><img src="@/assets/img/microsoftLogin.png" alt="">
+
+                </v-toolbar-title>
                 <div class="flex-grow-1"></div>
 
               </v-toolbar>
               <v-card-text>
-                <v-form>
+                 <h2><strong class="black--text font-maven">Sign in</strong></h2>
+                <v-form class="pa-5">
                     <v-tooltip right>
                   <template v-slot:activator="{ on }">
-                      <v-text-field
-                    label="Correo Electronico Completo"
-                    name="login"
-                    type="email"
-                    prepend-icon="email"
-                  ></v-text-field>
+
+                    <div style="border-bottom:1px solid black" class="animated" :class="{'fadeOutLeft':!isMail}" >
+                      <span class="correo black--text"></span>
+                    </div>
+                    <div style="border-bottom:1px solid black" class="animated" :class="{'fadeInRigth':isMail}">
+                      <span class="password black--text"></span>
+                    </div>
                   </template>
-                  <span>Correo Electronico</span>
+
                     </v-tooltip>
-                  <v-text-field
-                    id="password"
-                    label="Contaseña"
-                    name="password"
-                    prepend-icon="lock"
-                  ></v-text-field>
+
                 </v-form>
+                <span class="black--text pt-10">No account? <a href="#">Create one!</a></span>
               </v-card-text>
               <v-card-actions>
                 <div class="flex-grow-1"></div>
-                <v-btn >Login</v-btn>
+                <v-btn color="blue white--text" v-if="isMail" id="v-step-0" tile large elevation="0" @click="changeIsMail">Next</v-btn>
+                 <v-btn color="blue white--text" v-else id="v-step-1" tile large elevation="0" @click="goto">Next</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
         </v-row>
       </v-container>
+      <v-tour name="loginIn" :steps="steps"></v-tour>
     </v-content>
 </template>
+
+<script>
+import Typed from 'typed.js';
+export default {
+  data(){
+    return{
+steps: [
+          {
+            target: '#v-step-0',  // We're using document.querySelector() under the hood
+            content: `Ahora puedes ingresar tu contraseña`
+          },
+          {
+            target: '#v-step-1',  // We're using document.querySelector() under the hood
+            content: `Ahora puedes ingresar a tu cuenta`
+          }
+      ],
+      isMail:true
+    }
+    },
+    mounted(){
+       new Typed('.correo', {
+      strings: ["tusuario@outlook", "tusuario@catolica.edu.sv"],
+      typeSpeed: 50,
+      backSpeed:50
+      });
+        setTimeout(()=>{
+        this.$tours['loginIn'].start();
+      },2000);
+    },
+    methods:{
+      changeIsMail(){
+        this.isMail=false;
+        new Typed('.password', {
+      strings: ["*****", "*******************"],
+      typeSpeed: 50,
+      backSpeed:50
+      });
+        },
+        goto(){
+          this.$emit("changeNow");
+        }
+    }
+}
+</script>

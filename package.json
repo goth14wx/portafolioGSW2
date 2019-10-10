@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "nuxt": "^2.0.0",
+    "typed.js": "^2.0.11",
     "vue-draggable-resizable": "^2.0.1",
     "vue-introjs": "^1.3.2",
     "vue-tour": "^1.1.0"

@@ -38,7 +38,7 @@ export default {
   plugins: [
     { src: '@/plugins/draggable', ssr: false },
     { src: '@/plugins/vue-tour', ssr: false },
-
+   // { src: '@/plugins/typed', ssr: false },
   ],
   /*
   ** Nuxt.js dev-modules

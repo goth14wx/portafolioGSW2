@@ -1,6 +1,7 @@
 <template>
 <div>
              <v-app-bar
+             v-if="login"
       color="#1a1a1f"
       dark
       height="50px"
@@ -18,6 +19,31 @@
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
     </v-app-bar>
+<!--DASHBOARD APP BAR-->
+
+  <v-app-bar
+             v-if="dashboard"
+      color="#0078d4"
+      dark
+      height="50px"
+      flat
+    >
+
+      <v-toolbar-title class="white--text"> Microsoft Azure</v-toolbar-title>
+
+      <div class="flex-grow-1"></div>
+      <v-btn icon>
+        <v-icon>more_vert</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>person</v-icon>
+      </v-btn>
+    </v-app-bar>
+
+<!--END DASHBOARD APP BAR-->
+
+
     <v-container fluid class="mt-0 pt-0 " v-if="login">
   <v-row class="black--text mt-0" style="background-color:#ececec" >
     <v-col class="mt-0 d-flex justify-start" cols="4" sm="4">
@@ -56,12 +82,14 @@
     </v-col>
   </v-row>
 </v-container>
-  <login v-else/>
+  <login v-else-if="!dashboard" @changeNow="changeDashboard"/>
+  <dashboard v-else></dashboard>
 </div>
 </template>
 <script>
 import logomicrosoft from "@/components/azure/logomicrosoft";
 import login from "@/components/azure/login";
+import dashboard from "@/components/azure/dashboard";
 export default {
   data(){
     return{
@@ -71,22 +99,29 @@ export default {
             content: `Ahora Logueate en tu cuenta`
           }
       ],
-      login:true
+      login:true,
+      dashboard:false
     }
   },
   components:{
     logomicrosoft,
-    login
+    login,
+    dashboard
   },
     mounted(){
       setTimeout(()=>{
         this.$tours['login'].start()
-      },2000);
+      },1000);
     },
     methods:{
       changeBackground(){
-        login=false
+       this.login=false;
+       console.log("emitido");
         this.$emit("cb",true);
+        },
+        changeDashboard(){
+          this.$emit("cb",false);
+          this.dashboard= true;
         }
     }
 }

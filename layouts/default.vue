@@ -61,7 +61,7 @@ export default {
           },
 
  },
-  azureB:false
+  azureB:false,
     }
   },
   components:{
@@ -72,8 +72,8 @@ export default {
     alertThis(){
       alert("hola");
     },
-    cba(){
-      this.azureB = true;
+    cba(e){
+      this.azureB = e;
     }
   },
     mounted(){
